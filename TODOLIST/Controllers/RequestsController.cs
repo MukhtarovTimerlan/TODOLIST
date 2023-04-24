@@ -83,7 +83,7 @@ namespace TODOLIST.Controllers
         [HttpPut("EditRequest")]
         public async Task<IActionResult> PutRequest(int id, EditRequestDTO editRequestData)
         {
-            var requestData = await _context.RequestDatas.FirstOrDefaultAsync(rd => rd.id == id);
+            var requestData = await _context.RequestDatas.FirstOrDefaultAsync(rd => rd.Id == id);
 
             if (requestData == null)
             {
@@ -120,7 +120,7 @@ namespace TODOLIST.Controllers
         // POST: api/Requests
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Request>> PostRequest(Request request)
+        public async Task<ActionResult<Request>> PostRequest(PostRequestDto request)
         {
             if (_context.Requests == null)
             {
@@ -131,7 +131,7 @@ namespace TODOLIST.Controllers
             {
                 return Problem("You don't have Person with this id");
             }
-            var Request1 = new Request(request.id, request.RequestData.Title, request.RequestData.Description, request.PersonId, request.RequestData.StatusId);
+            var Request1 = new Request(request.Title, request.Description, request.PersonId, request.StatusId);
 
             _context.Requests.Add(Request1);
             await _context.SaveChangesAsync();

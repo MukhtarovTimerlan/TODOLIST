@@ -13,12 +13,10 @@
 
         }
 
-        public Request(int id, string Title, string Description, int PersonId, int StatusId)
+        public Request(string Title, string Description, int PersonId, int StatusId)
         {
-            this.id = id;
             this.RequestData = new RequestData
             {
-                id = id,
                 Title = Title,
                 Description = Description,
                 StatusId = StatusId,
